@@ -1,23 +1,20 @@
 import logo from './logo.svg';
 import './App.css';
+import { useContext, useState } from "react"
+import { UserContext } from "../src/context/UserContext"
 
 function App() {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  const {user, setUser, handleLogin, handleRegister} = useContext(UserContext)
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <input value={username} onChange={(e)=> setUsername(e.target.value)}></input>
+      <input value={password} onChange={(e)=> setPassword(e.target.value)}></input>
+
+      <button onClick={()=> handleLogin(email, password)}>Login</button>
+      <button onClick={()=> handleRegister(email, password)}>Password</button>
     </div>
   );
 }
